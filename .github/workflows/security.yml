@@ -13,8 +13,8 @@
 #                   build time instead: the app image in ci.yml's `publish-image`
 #                   job and build-image.yml, and the TEI/bge-m3 image in
 #                   build-tei-image.yml.
-#   * gitleaks    — SKIPPED: run-gitleaks defaults to false. Native GitHub secret
-#                   scanning covers this repo's history.
+#   * gitleaks    — FORK TEST: enabled via run-gitleaks: true, pointing at a fork
+#                   of bluedots-automation carrying the fail-closed fix.
 #
 # The TEI/bge-m3 image matters disproportionately here: it is a third-party
 # HuggingFace base with model weights baked in, making it the least-inspected
@@ -53,8 +53,9 @@ jobs:
       contents: read
       security-events: write
       packages: read
-    uses: Blue-Dots-Economy/bluedots-automation/.github/workflows/security-scan.yml@56298e8001dbbf5f25b0d47f958b46727fc8f9d5  # main 2026-09-13
+    uses: vinodbhorge/bluedots-automation/.github/workflows/security-scan.yml@9e13ffa1f3ef7e0bd21f00c86f3ee344bb5d8638  # FORK TEST: fix/gitleaks-fail-closed
     with:
       language: ts
+      run-gitleaks: true   # FORK TEST: the whole point of this run
       node-version: "24"   # matches engines.node (>=24)
       block: false
