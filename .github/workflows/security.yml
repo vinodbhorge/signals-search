@@ -58,4 +58,4 @@ jobs:
       language: ts
       run-gitleaks: true   # FORK TEST: the whole point of this run
       node-version: "24"   # matches engines.node (>=24)
-      block: false
+      block: true    # FORK TEST: prove --exit-code is honoured again
