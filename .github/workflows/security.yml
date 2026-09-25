@@ -53,9 +53,8 @@ jobs:
       contents: read
       security-events: write
       packages: read
-    uses: vinodbhorge/bluedots-automation/.github/workflows/security-scan.yml@9e13ffa1f3ef7e0bd21f00c86f3ee344bb5d8638  # FORK TEST: fix/gitleaks-fail-closed
+    uses: vinodbhorge/bluedots-automation/.github/workflows/security-scan.yml@96227e50e89ad821df3ecb5f927ba9e84313e5d8  # FORK TEST: fix/gitleaks-fail-closed
     with:
       language: ts
-      run-gitleaks: true   # FORK TEST: the whole point of this run
       node-version: "24"   # matches engines.node (>=24)
-      block: true    # FORK TEST: prove --exit-code is honoured again
+      block: false   # FORK TEST: report-only, proving default-on
